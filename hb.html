@@ -9,13 +9,16 @@ $(document).ready(function() {
   $("#submit").on("click", function(event) {
     event.preventDefault();
     console.log("Submit was clicked.");
-    $("#calculated_name").val( $("#path").val() 
-                               + '/'
-                               + 'Season ' + $("#season").val() 
-                               + '/'
-                               + 'JAG - s' + $("#season").val() + 'e' + $("#episode").val() + ' - ' 
-                               + $("#episode_name").val() + '.m4v'
-                             );
+    $("#calculated_filename").val( 'JAG - s' + $("#season").val() + 'e' + $("#episode").val() + ' - ' 
+                                   + $("#episode_name").val() + '.m4v'
+                                 );
+    $("#calculated_full_path").val( $("#path").val() 
+                                    + '/'
+                                    + 'Season ' + $("#season").val() 
+                                    + '/'
+                                    + 'JAG - s' + $("#season").val() + 'e' + $("#episode").val() + ' - ' 
+                                    + $("#episode_name").val() + '.m4v'
+                                  );
   });
 });
 </script>
@@ -93,7 +96,10 @@ select {
     <input id="submit" type="submit" />
   </p>
   <p>
-    Calculated Name: <input id="calculated_name" type="text" name="calculated_name" />
+    Calculated Filename: <input id="calculated_filename" type="text" name="calculated_filename" />
+  </p>
+  <p>
+    Calculated Full Path: <input id="calculated_full_path" type="text" name="calculated_full_path" />
   </p>
 
 </body>
