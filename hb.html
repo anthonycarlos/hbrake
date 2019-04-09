@@ -9,18 +9,27 @@ $(document).ready(function() {
   $("#submit").on("click", function(event) {
     event.preventDefault();
     console.log("Submit was clicked.");
-    $("#calculated_filename").val( 'JAG - s' + $("#season").val() + 'e' + $("#episode").val() + ' - ' 
+    $("#calculated_filename").val( $("#show").val() + ' - s' + $("#season").val() + 'e' + $("#episode").val() + ' - ' 
                                    + $("#episode_name").val() + '.m4v'
                                  );
     $("#calculated_full_path").val( $("#path").val() 
                                     + '/'
+                                    + $("#show").val() 
+                                    + '/'
                                     + 'Season ' + $("#season").val() 
                                     + '/'
-                                    + 'JAG - s' + $("#season").val() + 'e' + $("#episode").val() + ' - ' 
+                                    + $("#show").val() + ' - s' + $("#season").val() + 'e' + $("#episode").val() + ' - ' 
                                     + $("#episode_name").val() + '.m4v'
                                   );
   });
 });
+function copyToClipboard(src) {
+  var copyText = document.getElementById(src);
+  copyText.select();
+  document.execCommand("copy");
+  //alert("Copied the text: " + copyText.value);
+}
+
 </script>
 <style>
 body {
@@ -38,7 +47,9 @@ select {
 </style>
 <body>
   <p>
-    Path: <input id="path" type="text" name="path" value="/Volumes/Parents Movies/Plex/TV Shows/JAG" />
+    Path: <input id="path" type="text" name="path" value="/Volumes/Parents Movies/Plex/TV Shows" />
+    <br />
+    Show: <input id="show" type="text" name="show" value="JAG" />
     <br />
     Season: <select id="season" name="season">
       <option value="01">01</option>
@@ -96,10 +107,10 @@ select {
     <input id="submit" type="submit" />
   </p>
   <p>
-    Calculated Filename: <input id="calculated_filename" type="text" name="calculated_filename" />
+  Calculated Filename: <input id="calculated_filename" type="text" name="calculated_filename" /> <button onClick="copyToClipboard('calculated_filename')">Copy</button>
   </p>
   <p>
-    Calculated Full Path: <input id="calculated_full_path" type="text" name="calculated_full_path" />
+    Calculated Full Path: <input id="calculated_full_path" type="text" name="calculated_full_path" /> <button onClick="copyToClipboard('calculated_full_path')">Copy</button>
   </p>
 
 </body>
