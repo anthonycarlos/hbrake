@@ -6,9 +6,15 @@
 <script src="jquery-3.3.1.js"></script>
 <script>
 $(document).ready(function() {
+  $("#inc_episode").on("click", function(event) {
+    var episode = parseInt($("#episode").val()) + 1;
+    if (episode < 10) {
+      episode = "0" + episode;
+    }
+    $("#episode").val(episode);
+  });
   $("#submit").on("click", function(event) {
     event.preventDefault();
-    console.log("Submit was clicked.");
     $("#calculated_filename").val( $("#show").val() + ' - s' + $("#season").val() + 'e' + $("#episode").val() + ' - ' 
                                    + $("#episode_name").val() + '.m4v'
                                  );
@@ -100,6 +106,7 @@ select {
       <option value="31">31</option>
       <option value="32">32</option>
     </select>
+    <button id="inc_episode">Increment</button>
     <br />
     Name: <input id="episode_name" type="text" name="episode_name" value="Silent Service" />
   </p>
@@ -107,10 +114,14 @@ select {
     <input id="submit" type="submit" />
   </p>
   <p>
-  Calculated Filename: <input id="calculated_filename" type="text" name="calculated_filename" /> <button onClick="copyToClipboard('calculated_filename')">Copy</button>
+    Calculated Filename: <input id="calculated_filename" type="text" name="calculated_filename" />
+    <br />
+    <button onClick="copyToClipboard('calculated_filename')">Copy</button>
   </p>
   <p>
-    Calculated Full Path: <input id="calculated_full_path" type="text" name="calculated_full_path" /> <button onClick="copyToClipboard('calculated_full_path')">Copy</button>
+    Calculated Full Path: <input id="calculated_full_path" type="text" name="calculated_full_path" />
+    <br />
+    <button onClick="copyToClipboard('calculated_full_path')">Copy</button>
   </p>
 
 </body>
