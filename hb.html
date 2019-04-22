@@ -6,6 +6,12 @@
 <script src="jquery-3.3.1.js"></script>
 <script>
 $(document).ready(function() {
+  $("#calculated_filename_button").on("click", function(event) {
+    copyToClipboard('calculated_filename');
+  });
+  $("#calculated_full_path_button").on("click", function(event) {
+    copyToClipboard('calculated_full_path');
+  });
   $("#inc_episode").on("click", function(event) {
     var episode = parseInt($("#episode").val()) + 1;
     if (episode < 10) {
@@ -116,12 +122,12 @@ select {
   <p>
     Calculated Filename: <input id="calculated_filename" type="text" name="calculated_filename" />
     <br />
-    <button onClick="copyToClipboard('calculated_filename')">Copy</button>
+    <button id="calculated_filename_button">Copy</button>
   </p>
   <p>
     Calculated Full Path: <input id="calculated_full_path" type="text" name="calculated_full_path" />
     <br />
-    <button onClick="copyToClipboard('calculated_full_path')">Copy</button>
+    <button id="calculated_full_path_button">Copy</button>
   </p>
 
 </body>
